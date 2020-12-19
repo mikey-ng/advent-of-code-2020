@@ -6,7 +6,8 @@ for line in f:
         print ((2020 - int(line)) * int(line))
         break
     nums.add(int(line))
-
+    
+f.close()
 # part2
 f = open('input')
 nums = []
@@ -25,3 +26,4 @@ for num in nums:
         i, j = two_sum[2020 - num]
         print(num * nums[i] * nums[j])
         break
+f.close()
