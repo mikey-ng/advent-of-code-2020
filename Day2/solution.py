@@ -11,6 +11,7 @@ for line in f:
     count = pwd.count(char)
     res += 1 if int(mn) <= count <= int(mx) else 0
 
+f.close()
 print(res)
 
 # part 2
@@ -25,4 +26,5 @@ for line in f:
 
     res += 1 if (pwd[first-1] == char) ^ (pwd[second-1] == char) else 0
 
+f.close()
 print(res)
