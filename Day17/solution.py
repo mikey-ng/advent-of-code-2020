@@ -127,7 +127,6 @@ for t in range(cycles):
     temp_space = get_space(n, cycles)
     temp_bounds = bounds.copy()
     for l in range(bounds[0] - 1, bounds[1] + 1 + 1):
-    #for l in range(bounds[0], bounds[0] + 1):
         for k in range(bounds[2] - 1, bounds[3] + 1 + 1):
             for i in range(bounds[4] - 1, bounds[5] + 1 + 1):
                 for j in range(bounds[6] - 1, bounds[7] + 1 + 1):
