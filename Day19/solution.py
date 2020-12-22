@@ -31,12 +31,13 @@ def resolve_rule(key, rulebook, resolved, part):
             if '|' in rule:
                 rule = '(' + rule + ')'
 
-            # rule insertion for part 2
+            # rule amendment for part 2
             if key == '8' and part == 2:
                 rule = '(' + rule + '+)' 
 
             and_rules.append(rule)
 
+        # rule amendment for part 2
         if key == '11' and part == 2:
             or_rules.append('(' + '|'.join([and_rules[0] + '{' + str(i) + '}' + and_rules[1] + '{'+ str(i) +'}' for i in range(1, 6)]) + ')')
         else:
