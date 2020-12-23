@@ -14,12 +14,12 @@ class Game:
             input += list(range(10, 1000000 + 1))
             self.mx = 1000000
 
-        # store Cup objects in dict with label as key
-        self.cups = {}
+        # store Cup objects in array with label-1 as index
+        self.cups = [None] * len(input)
         prev = None
         for label in input:
             cup = self.Cup(label)
-            self.cups[label] = cup
+            self.cups[label-1] = cup
 
             if prev is not None:
                 prev.next = cup
@@ -27,13 +27,13 @@ class Game:
             prev = cup
 
         # link first and last cups
-        self.cups[input[-1]].next = self.cups[input[0]]
+        self.cups[input[-1]-1].next = self.cups[input[0]-1]
 
         self.first = input[0]
 
     def play(self):
         n = 100 if not self.part2 else 10000000
-        curr_cup = self.cups[self.first]
+        curr_cup = self.cups[self.first-1]
 
         for i in range(n):
             # remove cups from circle
@@ -50,7 +50,7 @@ class Game:
             dest = curr_cup.label - 1
             while dest in picked_up or dest == 0:
                 dest = dest - 1 if dest > 0 else self.mx
-            dest_cup = self.cups[dest]
+            dest_cup = self.cups[dest-1]
 
             # place removed cups after destination
             first.next.next.next = dest_cup.next
@@ -64,10 +64,10 @@ class Game:
     # return results
     def results(self, part2=False):
         if part2:
-            cup = self.cups[1]
+            cup = self.cups[0]
             return cup.next.label * cup.next.next.label
         else:
-            cup = self.cups[1].next
+            cup = self.cups[0].next
             labels = []
             while cup.label != 1:
                 labels.append(str(cup.label))
